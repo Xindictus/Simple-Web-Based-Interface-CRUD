@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Insert Song</title>
+
+    <link rel="stylesheet" href="bootstrap.min.css" type="text/css">
+
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+
+        <!--TITLE AND BACK BUTTON-->
+        <div class="well alert-warning" style="margin-top: 25px;">
+            <div class="text-center" style="position: relative;">
+                <div style="position: absolute;">
+                    <a href="/" style="float: left; position: absolute;">
+                        <button class="btn btn-default">
+                            Back
+                        </button>
+                    </a>
+                </div>
+                <div style="display: inline-block;">
+                    <h2 class="text-center" style="color: #d58512">
+                        Insert Song
+                    </h2>
+                </div>
+            </div>
+            <hr>
+
+            <!--INSERT SONG FORM-->
+            <form class="form-horizontal" method="post" action="/insertSong">
+
+                <!--TITLE-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">
+                        Title:
+                    </label>
+                    <div class="col-md-6">
+                        <input name="songTitle" type="text" class="form-control" maxlength="60" placeholder="Insert title" required>
+                    </div>
+                </div>
+
+                <!--PRODUCTION YEAR-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">
+                        Production Year:
+                    </label>
+                    <div class="col-md-6">
+                        <input name="productionYear" type="number" min="1900" max="2016" step="1" class="form-control" placeholder="Insert production year" required>
+                    </div>
+                </div>
+
+                <!--CD-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="cdSelect">
+                        CD:
+                    </label>
+                    <div class="col-md-6">
+                        <select id="cdSelect" name="cdSelect" class="form-control">
+                            %for cd in cds:
+                            <option value={{cd['code_cd']}}>{{cd['code_cd']}}</option>
+                            %end
+                        </select>
+                    </div>
+                </div>
+
+                <!--SINGER-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="cdSelect">
+                        Singer:
+                    </label>
+                    <div class="col-md-6">
+                        <select id="singerSelect" name="singerSelect" class="form-control">
+                            %for singer in singers:
+                            <option value={{singer['ar_taut']}}>{{singer['ar_taut']}}</option>
+                            %end
+                        </select>
+                    </div>
+                </div>
+
+                <!--COMPOSER-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="cdSelect">
+                        Composer:
+                    </label>
+                    <div class="col-md-6">
+                        <select id="composerSelect" name="composerSelect" class="form-control">
+                            %for composer in composers:
+                            <option value={{composer['ar_taut']}}>{{composer['ar_taut']}}</option>
+                            %end
+                        </select>
+                    </div>
+                </div>
+
+                <!--SONG WRITER-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="cdSelect">
+                        Song Writer:
+                    </label>
+                    <div class="col-md-6">
+                        <select id="songWriterSelect" name="songWriterSelect" class="form-control">
+                            %for song_writer in song_writers:
+                            <option value={{song_writer['ar_taut']}}>{{song_writer['ar_taut']}}</option>
+                            %end
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group text-center">
+                    <input class="btn btn-primary" type="submit" value="Insert Song">
+                </div>
+
+            </form>
+
+            <!--ALERTS THE USER THE RESULT OF THE INSERTION-->
+            {{!insert_status}}
+        </div>
+    </div>
+</div>
+
+</body>
+
+<script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="bootstrap.min.js"></script>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Update Artist</title>
+
+    <link rel="stylesheet" href="bootstrap.min.css" type="text/css">
+
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+
+        <div class="well" style="margin-top: 25px;">
+            <div class="text-center" style="position: relative;">
+                <div style="position: absolute;">
+                    <a href="/searchArtists" style="float: left; position: absolute;">
+                        <button class="btn btn-default">
+                            Return to Searching Artists
+                        </button>
+                    </a>
+                </div>
+                <div style="display: inline-block;">
+                    <h2 style="color: #3e8f3e">
+                        Update Artist
+                    </h2>
+                </div>
+            </div>
+            <hr style="border-color: #3e8f3e">
+
+            <!--UPDATE ARTIST-->
+            <form class="form-horizontal" method="post" action="/updateArtist">
+
+                <!--HIDDEN INPUT CONTAINING NATIONAL ID-->
+                <input type="text" name="nationalID" value="{{nationalID}}" style="display: none;">
+
+                <!--NAME-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">
+                        Name:
+                    </label>
+                    <div class="col-md-6">
+                        <input name="artistName" type="text" class="form-control" maxlength="36" placeholder="Insert national id" value="{{!onoma}}" required>
+                    </div>
+                </div>
+
+                <!--SURNAME-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">
+                        Surname:
+                    </label>
+                    <div class="col-md-6">
+                        <input name="artistSurname" type="text" class="form-control" maxlength="45" placeholder="Insert name" value="{{!epitheto}}" required>
+                    </div>
+                </div>
+
+                <!--BIRTH YEAR-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">
+                        Birth Year
+                    </label>
+                    <div class="col-md-6">
+                        <input name="birthYear" type="number" min="1900" max="2016" step="1" class="form-control" placeholder="Insert year" value="{{!etos_gen}}" required>
+                    </div>
+                </div>
+
+                <div class="form-group text-center">
+                    <input class="btn btn-primary" type="submit" value="Update Artist">
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

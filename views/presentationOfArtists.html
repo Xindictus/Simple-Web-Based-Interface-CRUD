@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Presentation of Artists</title>
+
+    <link rel="stylesheet" href="bootstrap.min.css" type="text/css">
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+
+        <div class="well" style="margin-top: 25px;">
+            <div class="text-center" style="position: relative;">
+                <div style="position: absolute;">
+                    <a href="/" style="float: left; position: absolute;">
+                        <button class="btn btn-default">
+                            Back
+                        </button>
+                    </a>
+                </div>
+                <div style="display: inline-block;">
+                    <h2 style="color: #2aabd2">
+                        Presentation of Artists
+                    </h2>
+                </div>
+            </div>
+            <hr style="border-color: #2aabd2">
+
+            <!--PRESENTATION OF ARTISTS-->
+            <form class="form-horizontal" method="post" action="/searchArtists">
+
+                <!--NAME-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">
+                        Name:
+                    </label>
+                    <div class="col-md-6">
+                        <input name="artistName" type="text" maxlength="36" class="form-control" placeholder="Insert artist name">
+                    </div>
+                </div>
+
+                <!--SURNAME-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">
+                        Surname:
+                    </label>
+                    <div class="col-md-6">
+                        <input name="artistSurname" type="text" maxlength="45" class="form-control" placeholder="Insert artist surname">
+                    </div>
+                </div>
+
+                <!--BIRTH YEAR FROM-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">
+                        Birth Year - From:
+                    </label>
+                    <div class="col-md-6">
+                        <input name="birthYearFrom" type="number" min="1900" max="2016" step="1" class="form-control" placeholder="Insert birth year from">
+                    </div>
+                </div>
+
+                <!--BIRTH YEAR TO-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">
+                        Birth Year - To:
+                    </label>
+                    <div class="col-md-6">
+                        <input name="birthYearTo" type="number" min="1900" max="2016" step="1" class="form-control" placeholder="Insert birth year to">
+                    </div>
+                </div>
+
+                <!--TYPE-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">
+                        Type:
+                    </label>
+                    <div class="col-md-6">
+                        <input type="radio" name="type" value="singer"> Singer <br>
+                        <input type="radio" name="type" value="song_writer"> Song Writer <br>
+                        <input type="radio" name="type" value="composer"> Composer
+                    </div>
+                </div>
+
+                <div class="form-group text-center">
+                    <input class="btn btn-primary" type="submit" value="Search">
+                    <a href="/searchArtists">
+                        <input class="btn btn-danger" type="button" value="Clear results">
+                    </a>
+                </div>
+            </form>
+
+            <!--UPDATE RESULT, SHOW ONLY WHEN AN UPDATE HAPPENS-->
+            {{!update_status}}
+        </div>
+
+        <!--SEARCH RESULTS-->
+        <div id="artistResults" class="row" style="display: {{!display}}">
+
+            <h2 class="text-center">
+                View Artist Results
+            </h2>
+            <hr>
+            <table class="table table-bordered">
+
+                <thead>
+                <tr>
+                    <th width="15%">National ID</th>
+                    <th width="25%">Name</th>
+                    <th width="25%">Surname</th>
+                    <th width="20%">Birth Year</th>
+                    <th width="25%">Edit?</th>
+                </tr>
+                </thead>
+                <tbody>
+                %for artist in artists:
+                <tr>
+                    <td>{{artist['ar_taut']}}</td>
+                    <td>{{artist['onoma']}}</td>
+                    <td>{{artist['epitheto']}}</td>
+                    <td>{{artist['etos_gen']}}</td>
+                    <td>
+                        <form method="get" action="/updateArtist">
+                            <input type="text" name="editID" value="{{artist['ar_taut']}}" style="display: none">
+                            <input type="submit" class="btn btn-warning" value='Edit Me!'>
+                        </form>
+                    </td>
+                </tr>
+                %end
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+</div>
+
+</body>
+
+<script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="bootstrap.min.js"></script>
+<script>
+
+</script>
+
+</html>
