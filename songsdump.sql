@@ -15,16 +15,16 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
---
--- Table structure for table `cd_production`
---
-
 CREATE USER 'singer'@'localhost' IDENTIFIED BY 'singer';
 GRANT ALL PRIVILEGES ON * . * TO 'singer'@'localhost';
 FLUSH PRIVILEGES;
 
 CREATE DATABASE `songs` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `songs`;
+
+--
+-- Table structure for table `cd_production`
+--
 
 DROP TABLE IF EXISTS `cd_production`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
